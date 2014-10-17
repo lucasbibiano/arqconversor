@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="jumbotron">
+    <h3>Conversor de Moedas</h3>
+  </div>
+  
+  <form action="/converte/" method="get">
+    <input type="text" placeholder="valor" name="valor">
+    <input type="text" placeholder="de" name="de">
+    <input type="text" placeholder="para" name="para">
+    <input type="submit" value="Converter">
+  </form>
+  
+  <% if @result %>
+    <h3>Resultado = <%= @result %></h3>
+  <% end %>
+  
+  <p>Ex: 0.34 de dólar para euro</p>
+</div>
+

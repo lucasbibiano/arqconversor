@@ -19,6 +19,6 @@ get '/' do
 end
 
 get '/converte/' do
-  @result = Converter.new(params[:de], params[:para], params[:valor]).convert
+  @result = Converter.new(params[:de], params[:valor]).convert
   erb :index
 end

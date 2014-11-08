@@ -1,8 +1,7 @@
 class Converter
   
-  def initialize(from, to, value)
+  def initialize(from, value)
     @from = from
-    @to = to
     @value = BigDecimal.new(value)
      
     ExchangeServiceConnector.new.get_webservice_data
@@ -10,11 +9,14 @@ class Converter
   
   def convert
     currency_from = Currency.find_by(name: @from)
-    currency_to = Currency.find_by(name: @to)
+    result = {}
     
-    from_in_eu = @value / currency_from.value
+    Currency.all.each do |currency_to|
+      from_in_eu = @value / currency_from.value
+      result[currency_to.name] = (from_in_eu * currency_to.value).round(2)
+    end
     
-    return from_in_eu * currency_to.value
+    return result
   end
   
   

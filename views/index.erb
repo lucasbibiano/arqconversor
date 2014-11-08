@@ -11,7 +11,12 @@
   </form>
   
   <% if @result %>
-    <h3>Resultado = <%= @result %></h3>
+    <h3>Resultado</h3>
+    <ul>
+      <% @result.each do |k, v| %>
+        <li class=<%= params[:para] == k ? "active" : "" %>><%= params[:valor] %> <%= k %> = <%= v %> <%= params[:para] %></li>
+      <% end %>
+    </ul>
   <% end %>
   
   <p>Ex: 0.34 de dólar para euro</p>

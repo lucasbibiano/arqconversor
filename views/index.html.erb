@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="jumbotron">
+    <h3>Conversor de Moedas</h3>
+  </div>
+  
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+  
+  <% if @result %>
+    <h3>Resultado = <%= @result %></h3>
+  <% end %>
+  
+  <p>Ex: 0.34 de dólar para euro</p>
+</div>
+

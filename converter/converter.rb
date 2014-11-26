@@ -8,7 +8,7 @@ class Converter
   end
   
   def convert   
-    currency_to = Currency.find_by(name: @to)
+    currency_to = Currency.find_by(name: @from)
     result = {}
     
     Currency.all.each do |currency_from|

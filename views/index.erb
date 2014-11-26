@@ -5,7 +5,7 @@
   
   <form action="/converte/" method="get">
     <input type="text" placeholder="valor" name="valor" value=<%= params[:valor] %>>
-    <select name="de">
+    <select name="de" id="de_sel">
       <option value="USD">USD</option>
 <option value="JPY">JPY</option>
 <option value="BGN">BGN</option>
@@ -40,7 +40,7 @@
 <option value="ZAR">ZAR</option>
 <option value="EUR">EUR</option>
 </select> para
-    <select name="para">
+    <select name="para" id="para_sel">
 <option value="USD">USD</option>
 <option value="JPY">JPY</option>
 <option value="BGN">BGN</option>
@@ -89,3 +89,28 @@
   
   <p>Ex: 0.34 de dólar para euro</p>
 </div>
+
+<script>
+  function getUrlParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}          
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $("#de_sel option[value=" + getUrlParameter('de') +"]").attr('selected', 'selected');
+    $("#para_sel option[value=" + getUrlParameter('para') +"]").attr('selected', 'selected');
+  });
+</script>

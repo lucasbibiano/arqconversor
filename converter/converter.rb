@@ -7,13 +7,13 @@ class Converter
     ExchangeServiceConnector.new.get_webservice_data
   end
   
-  def convert
-    currency_from = Currency.find_by(name: @from)
+  def convert   
+    currency_to = Currency.find_by(name: @to)
     result = {}
     
-    Currency.all.each do |currency_to|
-      from_in_eu = @value / currency_from.value
-      result[currency_to.name] = (from_in_eu * currency_to.value).round(2)
+    Currency.all.each do |currency_from|
+      to_in_eu = @value / currency_to.value
+      result[currency_from.name] = (to_in_eu * currency_from.value).round(2)
     end
     
     return result
